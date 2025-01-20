@@ -1,0 +1,11 @@
+.sort-options {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: white;
+    width: 200px;
+    height: 100vh;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  

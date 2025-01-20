@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    padding: 10px 20px;
+  }
+  
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  

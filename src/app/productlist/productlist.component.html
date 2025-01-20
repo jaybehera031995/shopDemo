@@ -1,0 +1,50 @@
+<div style="text-align: center;">
+  <input matInput placeholder="Search" style="width: 80%; margin: 20px 0; padding: 10px;">
+  <div *ngIf="filter != ''" style="width: 80%; margin-bottom: 20px; float: left;"><b>Applied Filters</b><span class="filterbox"> {{filter}}</span> <span (click)="clearFilter()" class="filterbox"> Clear Filters X</span> <!--<span *ngFor=" let x of filters">{{x}}</span>--> </div>
+  
+  <div style="display: flex; justify-content: center; width: 80%; margin: auto;">
+    <div style="flex: 1;">
+      <h3>Product Categories</h3>
+        <mat-accordion>
+         
+          <mat-expansion-panel *ngFor=" let x of category" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+            <mat-expansion-panel-header>
+              <mat-panel-title (click)="catchCategory(x)"> {{x}} </mat-panel-title>
+            </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div style="flex: 3;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span>Results Found: 5</span>
+        <button mat-raised-button color="primary" (click)="togglePopup()">Sort</button>
+      </div>
+
+      <div class="popup" [class.show]="isPopupVisible">
+        <div class="popup-header">
+          <div class="filter">Filter</div>
+          <button class="reset-button" (click)="resetAll()">Reset All</button>
+        </div>
+        <hr />
+        <div class="popup-content">
+          <h4 mat-dialog-title>Sort</h4>
+          <mat-dialog-content>
+            <button mat-raised-button color="primary" (click)="openSortDialog('asc')">A to Z</button>
+            <button mat-raised-button color="primary" (click)="openSortDialog('desc')">Z to A</button>
+          </mat-dialog-content>
+          <button (click)="togglePopup()">Close</button>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 5px; justify-content: center;">
+        <div *ngFor="let product of products" style="width: 200px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); padding: 10px; text-align: center; border-radius: 5px;">
+          <img [src]="product.display_img_url" alt="{{product.name}}" style="width: 100%; border-radius: 5px;">
+          <h3 style="margin: 10px 0 5px;">{{product.name}}</h3>
+          <p style="margin: 0;">Points: {{product.points}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
